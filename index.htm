@@ -67,7 +67,12 @@
       <option>UCM</option>
     </select>
 
-    <table id="errorTable">
+    <table style="
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+         id="errorTable">
       <thead>
         <tr>
           <th>Error</th>
@@ -91,7 +96,7 @@
         })
         .then(function (data) {
           codes = data;
-          applyFilters(); // render initially
+          applyFilters();
         })
         .catch(function (err) {
           console.error("Failed to load JSON:", err);

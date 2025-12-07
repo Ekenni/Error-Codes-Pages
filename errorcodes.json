@@ -1,0 +1,194 @@
+[
+  {
+    "error": 111,
+    "category": "Engine",
+    "description": "Engine Controller Failure - Hardware Failure",
+    "model": "MX Magnum"
+  },
+  {
+    "error": 211,
+    "category": "Armrest",
+    "description": "Hand THrottle",
+    "model": "MX Magnum"
+  },
+  {
+    "error": 1900,
+    "category": "DCU",
+    "description": "Battery Voltage Sensing",
+    "model": "Tier 4a"
+  },
+  {
+    "error": 12,
+    "category": "Transmission",
+    "description": "Master Clutch ",
+    "model": "MX Magnum"
+  },
+  {
+    "error": 151,
+    "category": "Engine",
+    "description": "Engine Controller Failure - Hardware Failure",
+    "model": "MX Magnum"
+  },
+  {
+    "error": 251,
+    "category": "Armrest",
+    "description": "Hand THrottle",
+    "model": "MX Magnum"
+  },
+  {
+    "error": 1500,
+    "category": "DCU",
+    "description": "Battery Voltage Sensing",
+    "model": "Tier 4a"
+  },
+  {
+    "error": 15,
+    "category": "Transmission",
+    "description": "Master Clutch ",
+    "model": "MX Magnum"
+  },
+  {
+    "error": 161,
+    "category": "Engine",
+    "description": "Engine Controller Failure - Hardware Failure",
+    "model": "MX Magnum"
+  },
+  {
+    "error": 261,
+    "category": "Armrest",
+    "description": "Hand THrottle",
+    "model": "MX Magnum"
+  },
+  {
+    "error": 1600,
+    "category": "DCU",
+    "description": "Battery Voltage Sensing",
+    "model": "Tier 4a"
+  },
+  {
+    "error": 16,
+    "category": "Transmission",
+    "description": "Master Clutch ",
+    "model": "MX Magnum"
+  },
+  {
+    "error": 161,
+    "category": "Engine",
+    "description": "Engine Controller Failure - Hardware Failure",
+    "model": "MX Magnum"
+  },
+  {
+    "error": 511,
+    "category": "Armrest",
+    "description": "Hand THrottle",
+    "model": "MX Magnum"
+  },
+  {
+    "error": 1950,
+    "category": "DCU",
+    "description": "Battery Voltage Sensing",
+    "model": "Tier 4a"
+  },
+  {
+    "error": 13,
+    "category": "Transmission",
+    "description": "Master Clutch ",
+    "model": "MX Magnum"
+  },
+  {
+    "error": 311,
+    "category": "Engine",
+    "description": "Engine Controller Failure - Hardware Failure",
+    "model": "MX Magnum"
+  },
+  {
+    "error": 231,
+    "category": "Armrest",
+    "description": "Hand THrottle",
+    "model": "MX Magnum"
+  },
+  {
+    "error": 1300,
+    "category": "DCU",
+    "description": "Battery Voltage Sensing",
+    "model": "Tier 4a"
+  },
+  {
+    "error": 52,
+    "category": "Transmission",
+    "description": "Master Clutch ",
+    "model": "MX Magnum"
+  },
+  {
+    "error": 181,
+    "category": "Engine",
+    "description": "Engine Controller Failure - Hardware Failure",
+    "model": "MX Magnum"
+  },
+  {
+    "error": 271,
+    "category": "Armrest",
+    "description": "Hand THrottle",
+    "model": "MX Magnum"
+  },
+  {
+    "error": 1970,
+    "category": "DCU",
+    "description": "Battery Voltage Sensing",
+    "model": "Tier 4a"
+  },
+  {
+    "error": 32,
+    "category": "Transmission",
+    "description": "Master Clutch ",
+    "model": "MX Magnum"
+  },
+  {
+    "error": 151,
+    "category": "Engine",
+    "description": "Engine Controller Failure - Hardware Failure",
+    "model": "MX Magnum"
+  },
+  {
+    "error": 218,
+    "category": "Armrest",
+    "description": "Hand THrottle",
+    "model": "MX Magnum"
+  },
+  {
+    "error": 1960,
+    "category": "DCU",
+    "description": "Battery Voltage Sensing",
+    "model": "Tier 4a"
+  },
+  {
+    "error": 14,
+    "category": "Transmission",
+    "description": "Master Clutch ",
+    "model": "MX Magnum"
+  },
+  {
+    "error": 411,
+    "category": "Engine",
+    "description": "Engine Controller Failure - Hardware Failure",
+    "model": "MX Magnum"
+  },
+  {
+    "error": 241,
+    "category": "Armrest",
+    "description": "Hand THrottle",
+    "model": "MX Magnum"
+  },
+  {
+    "error": 1940,
+    "category": "DCU",
+    "description": "Battery Voltage Sensing",
+    "model": "Tier 4a"
+  },
+  {
+    "error": 92,
+    "category": "Transmission",
+    "description": "Master Clutch ",
+    "model": "MX Magnum"
+  }
+]

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Error Codes Viewer</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+      }
+      .search-input,
+      .filter-dropdown {
+        margin: 10px 5px;
+        padding: 5px;
+      }
+      table {
+        border-collapse: collapse;
+        width: 100%;
+        margin-top: 10px;
+      }
+      th,
+      td {
+        border: 1px solid #ccc;
+        padding: 8px;
+        text-align: left;
+      }
+      th {
+        background: #f0f0f0;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Error Codes Viewer</h1>
+
+    <input
+      type="text"
+      id="searchInput"
+      class="search-input"
+      placeholder="Search error code..."
+    />
+
+    <label for="categorySelect">Category:</label>
+    <select id="categorySelect" class="filter-dropdown">
+      <option value="All">All categories</option>
+      <option>Engine</option>
+      <option>Transmission</option>
+      <option>Armrest</option>
+      <option>TMF</option>
+      <option>ICU/Instrument</option>
+      <option>ATC</option>
+      <option>EDC/Hitch</option>
+      <option>EHR/AUX</option>
+      <option>Rear PTO</option>
+      <option>FWD/DIFF</option>
+      <option>Front PTO</option>
+      <option>Front Suspension</option>
+      <option>DCU</option>
+      <option>EPL</option>
+      <option>FEHR</option>
+      <option>Front Hitch</option>
+      <option>ADIC/ICU2</option>
+      <option>Steering Controller</option>
+      <option>PERF</option>
+      <option>Fast Steer</option>
+      <option>Calibration U Codes</option>
+      <option>ABS</option>
+      <option>UCM</option>
+    </select>
+
+    <table id="errorTable">
+      <thead>
+        <tr>
+          <th>Error</th>
+          <th>Category</th>
+          <th>Description</th>
+          <th>Model</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+
+    <script>
+      let codes = [];
+      let currentPage = 1;
+      const rowsPerPage = 25;
+
+      // Load local JSON file
+      fetch("errorcodes.json")
+        .then((res) => res.json())
+        .then((data) => {
+          codes = data;
+          applyFilters(); // render initially
+        })
+        .catch((err) => console.error("Failed to load JSON:", err));
+
+      // Handle search
+      document.getElementById("searchInput").addEventListener("input", () => {
+        currentPage = 1; // reset to first page
+        applyFilters();
+      });
+
+      // Handle category filter
+      document
+        .getElementById("categorySelect")
+        .addEventListener("change", () => {
+          currentPage = 1; // reset to first page
+          applyFilters();
+        });
+
+      // Apply filters
+      function applyFilters() {
+        const term = document.getElementById("searchInput").value.toLowerCase();
+        const category = document.getElementById("categorySelect").value;
+
+        const filtered = codes.filter((code) => {
+          const matchesSearch =
+            String(code.error).toLowerCase().includes(term) ||
+            String(code.category).toLowerCase().includes(term) ||
+            String(code.description).toLowerCase().includes(term) ||
+            String(code.model).toLowerCase().includes(term);
+
+          const matchesCategory =
+            category === "All" ||
+            String(code.category).toLowerCase() === category.toLowerCase();
+
+          return matchesSearch && matchesCategory;
+        });
+
+        renderTable(filtered);
+        renderPagination(filtered);
+      }
+
+      // Render table with pagination
+      function renderTable(data) {
+        const tbody = document.querySelector("#errorTable tbody");
+        tbody.innerHTML = "";
+
+        if (data.length === 0) {
+          tbody.innerHTML = `<tr><td colspan="4" style="text-align:center;color:red">No results found</td></tr>`;
+          return;
+        }
+
+        const start = (currentPage - 1) * rowsPerPage;
+        const end = start + rowsPerPage;
+        const paginatedData = data.slice(start, end);
+
+        paginatedData.forEach((code) => {
+          const row = `<tr>
+            <td>${code.error || ""}</td>
+            <td>${code.category || ""}</td>
+            <td>${code.description || ""}</td>
+            <td>${code.model || ""}</td>
+          </tr>`;
+          tbody.innerHTML += row;
+        });
+      }
+
+      // Render pagination controls
+      function renderPagination(data) {
+        let paginationDiv = document.getElementById("pagination");
+        if (!paginationDiv) {
+          paginationDiv = document.createElement("div");
+          paginationDiv.id = "pagination";
+          paginationDiv.style.marginTop = "10px";
+          document.body.appendChild(paginationDiv);
+        }
+
+        const totalPages = Math.ceil(data.length / rowsPerPage);
+        paginationDiv.innerHTML = "";
+
+        if (totalPages <= 1) return;
+
+        // Prev button
+        const prevBtn = document.createElement("button");
+        prevBtn.textContent = "Prev";
+        prevBtn.disabled = currentPage === 1;
+        prevBtn.onclick = () => {
+          currentPage--;
+          renderTable(data);
+          renderPagination(data);
+        };
+        paginationDiv.appendChild(prevBtn);
+
+        // Page numbers
+        for (let i = 1; i <= totalPages; i++) {
+          const pageBtn = document.createElement("button");
+          pageBtn.textContent = i;
+          pageBtn.disabled = i === currentPage;
+          pageBtn.onclick = () => {
+            currentPage = i;
+            renderTable(data);
+            renderPagination(data);
+          };
+          paginationDiv.appendChild(pageBtn);
+        }
+
+        // Next button
+        const nextBtn = document.createElement("button");
+        nextBtn.textContent = "Next";
+        nextBtn.disabled = currentPage === totalPages;
+        nextBtn.onclick = () => {
+          currentPage++;
+          renderTable(data);
+          renderPagination(data);
+        };
+        paginationDiv.appendChild(nextBtn);
+      }
+    </script>
+  </body>
+</html>
